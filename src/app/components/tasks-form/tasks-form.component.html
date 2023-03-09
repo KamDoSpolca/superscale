@@ -1,0 +1,30 @@
+<h1 style="text-align:center;margin: 2rem">Task Form</h1>
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmitForm()">
+
+  <div style="margin:auto; display:table;">
+    <mat-form-field appearance="fill" class="example-full-width" style="margin:1rem;">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" value="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin:1rem;">
+      <mat-label>Type</mat-label>
+      <mat-select (selectionChange)="onChangeDropdown($event)" formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{type.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div style="margin:auto; display:table;">
+    <mat-form-field class="example-full-width" appearance="fill" style="margin:1rem;" *ngFor="let field of fieldsData; let i=index">
+      <mat-label>{{field}}</mat-label>
+      <input matInput [formControlName]="field" [value]="field">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit" style="display:block;margin:auto;">Save</button>
+
+</form>

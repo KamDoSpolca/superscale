@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Do you really wanna delete selected task?</p> 
+</div>
+<div><b>Name : </b>{{data.name}}</div>
+<div><b>Type : </b>{{data.type}}</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Keep</button>
+  <button mat-button (click)="onConfirmClick()" mat-raised-button color="warn">Delete</button>
+</div>

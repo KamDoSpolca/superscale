@@ -1,0 +1,37 @@
+<h1 style="text-align:center;margin: 2rem"> Tasks List</h1>
+
+<table mat-table [dataSource]="tasksList" class="mat-elevation-z8" width="100%">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action-edit">
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" (click)="onEdit(element)">Edit</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action-delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="warn" (click)="onDelete(element)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div *ngIf="tasksList.length === 0" style="text-align: center; margin-top: 5rem;">
+  <h2>Nothing here yet !</h2>
+  <button mat-raised-button color="primary" (click)="onAdd()">Add New Task</button>
+
+  
+</div>
